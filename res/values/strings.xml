@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bearing-Android-App-22</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="BearingPicture">BearingPicture</string>
+    <string name="bearingpicture">BearingPicture</string>
+    <string name="outterDiamterText">O/D</string>
+    <string name="widthText">Width</string>
+    <string name="innerdiameterText">I/D</string>
+    <string name="bearing_numberText">Bearing Number</string>
+    <string name="splashTextArthor">Programmed by T.Shemwell</string>
+    <string name="splashTextProgramName">Bearing Finder V1</string>
+    <string name="splashTextSoftwareName1">Working Penguin</string>
+    <string name="splashTextSoftwareName2">Software</string>
+    <string name="checkBox1inSettingsActivity">New CheckBox</string>
+    <string name="BearingNum">Bearing #</string>
+    <string name="IDSize">I/D Size</string>
+    <string name="ODSize">O/D Size</string>
+    <string name="Type">Type</string>
+    <string name="ImageNum">Image #</string>
+    <string name="Location">Location</string>
+    <string name="Next">Next ]</string>
+    <string name="Prev">[ Prev</string>
+    <string name="Edit">Edit</string>
+    <string name="Update">Update</string>
+    <string name="Zeros">000</string>
+    <string name="Search">Search</string>
+    <string name="ID">I/D</string>
+    <string name="OD">O/D</string>
+    <string name="W">W</string>
+    <string name="First">[[</string>
+    <string name="Last">]]</string>
+    <string name="record">Record number</string>
+    <string name="commentsText">Comments</string>
+</resources>

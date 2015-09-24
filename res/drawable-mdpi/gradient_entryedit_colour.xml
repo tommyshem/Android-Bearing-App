@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- seek bar syle backgroun colour yellow fill red -->
+
+
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip"/>
+            <gradient
+                android:startColor="#ccccff"
+                android:centerColor="#9999ff"
+                android:endColor="#ccccff"
+                android:angle="90"/>
+            />
+        </shape>
+    </item>
+
+
+</selector>

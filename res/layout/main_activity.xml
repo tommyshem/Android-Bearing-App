@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#e7ffdd">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ID"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Zeros"
+            android:id="@+id/etxt_ID"
+            android:layout_gravity="center|bottom"
+            android:maxLength="3"
+            android:maxWidth="60dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:focusable="false"
+            android:inputType="number"/>
+
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar_ID"
+            android:progressDrawable="@drawable/progressxml"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#e7ffdd">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/OD"
+            android:id="@+id/textView1"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="30dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            />
+
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Zeros"
+            android:id="@+id/etxt_OD"
+            android:layout_gravity="center_horizontal|bottom|left"
+            android:maxWidth="60dp"
+            android:maxLength="3"
+            android:focusable="false"
+            android:inputType="number"/>
+
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar_OD"
+            android:progressDrawable="@drawable/progressxml"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:background="#e7ffdd">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/W"
+            android:id="@+id/textView2"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="30dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"/>
+
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:text="@string/Zeros"
+            android:id="@+id/etxt_Width"
+            android:maxLength="3"
+            android:maxWidth="60dp"
+            android:focusable="false"
+            android:inputType="number"/>
+
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar_Width"
+            android:progressDrawable="@drawable/progressxml"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="#e7ffdd">
+
+        <ImageView
+            android:layout_width="116dp"
+            android:layout_height="122dp"
+            android:id="@+id/iv_BearingImage"
+            android:layout_gravity="center|left"
+            android:src="@drawable/bearing"
+            android:maxWidth="116dp"
+            android:minHeight="122dp"
+            android:minWidth="116dp"
+            android:maxHeight="122dp"
+            android:contentDescription="@string/BearingPicture"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bearing_numberText"
+            android:id="@+id/txtv_BearingTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:paddingLeft="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6000 zz"
+            android:id="@+id/tv_BearingNumber"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/iv_BearingImage"
+            android:layout_centerVertical="true"
+            android:paddingLeft="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID=12mm, OD=20mm, Width=100mm"
+            android:id="@+id/tv_BearingDescription"
+            android:gravity="bottom"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="124dp"
+            android:layout_alignBottom="@+id/iv_BearingImage"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Search"
+            android:id="@+id/btn_search"
+            android:typeface="serif"
+            android:onClick="SearchOnClick"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/iv_BearingImage"/>
+
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/listViewBearingsList"
+        android:background="#e7ffdd"/>
+
+
+</LinearLayout>
+
+

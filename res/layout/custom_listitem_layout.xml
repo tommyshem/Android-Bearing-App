@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_entryedit_colour"
+                android:clickable="false">
+
+    <TextView
+        android:id="@+id/txt_bearing_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Bearing Number"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:typeface="serif"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/txti_d_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txt_bearing_label"
+        android:text="I/D="
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:typeface="serif"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_list_bearingnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6000"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@+id/txt_bearing_label"
+        android:layout_alignTop="@+id/txt_bearing_label"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:textColor="#4851e5"/>
+
+    <TextView
+        android:id="@+id/txt_id_list_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_toRightOf="@+id/txti_d_label"
+        android:layout_below="@+id/txt_bearing_label"
+        android:typeface="serif"/>
+
+    <TextView
+        android:id="@+id/txt_od_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="O/D="
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_toRightOf="@+id/txt_id_list_value"
+        android:layout_below="@+id/txt_bearing_label"
+        android:paddingLeft="10dp"
+        android:typeface="serif"/>
+
+    <TextView
+        android:id="@+id/txt_od_list_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_toRightOf="@+id/txt_od_label"
+        android:layout_below="@+id/txt_bearing_label"
+        android:typeface="serif"/>
+
+    <TextView
+        android:id="@+id/txt_width_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WIDTH="
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_toRightOf="@+id/txt_od_list_value"
+        android:layout_below="@+id/txt_bearing_label"
+        android:paddingLeft="10dp"
+        android:typeface="serif"/>
+
+    <TextView
+        android:id="@+id/txt_list_width_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_toRightOf="@+id/txt_width_label"
+        android:layout_below="@+id/txt_bearing_label"
+        android:typeface="serif"/>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="dexedLibs">
+    <archive path="C:/Users/Tommy/SkyDrive/android/projects-working-on/Bearing-Android-App-22/bin/dexedLibs/annotations-62bab95d6948a2db17bbc7976160b014.jar" />
+    <archive path="C:/Users/Tommy/SkyDrive/android/projects-working-on/Bearing-Android-App-22/bin/dexedLibs/android-support-v4-b628be2ae9dd9dce843cca2a509b765e.jar" />
+  </library>
+</eclipse-userlibraries>
+

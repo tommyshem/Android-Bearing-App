@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutMainView"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:id="@+id/linearLayoutBearing"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BearingNum"
+            android:id="@+id/textViewBearing"
+            android:layout_gravity="center_horizontal|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:paddingRight="5dp"
+            />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextBearingNum"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:hint="Bearing number"
+            android:textColorHint="#346ac8"
+            android:inputType="text"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/linearLayoutID">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IDSize"
+            android:id="@+id/textViewID"
+            android:layout_gravity="center_horizontal|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextID"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:focusable="false"
+            android:hint="Type ID in mm"
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/linearLayoutOD">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ODSize"
+            android:id="@+id/textViewOD"
+            android:layout_gravity="center|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextOD"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:hint="Type OD in mm"
+            android:focusable="false"
+            android:editable="false"
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/linearLayoutWidth">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/widthText"
+            android:id="@+id/textViewWidth"
+            android:layout_gravity="center_horizontal|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextWidth"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:focusable="false"
+            android:hint="Width in mm"
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/linearLayoutType">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Type"
+            android:id="@+id/textViewType"
+            android:layout_gravity="center_horizontal|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextType"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:inputType="text"
+            android:focusable="false"
+            android:hint="zz z rs "
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/linearLayoutImageNum">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ImageNum"
+            android:id="@+id/textViewImageNum"
+            android:layout_gravity="center|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="13dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextImageNum"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:focusable="false"
+            android:hint="0 default"
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/linearLayoutLocation">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Location"
+            android:id="@+id/textViewLocation"
+            android:layout_gravity="center_horizontal|top"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textStyle="bold"
+
+            android:paddingRight="8dp"
+            android:paddingLeft="7dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextLocation"
+            android:typeface="serif"
+            android:textSize="20dp"
+            android:textColor="#322683"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:inputType="text"
+            android:textColorHint="#346ac8"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayoutNavBar"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/First"
+            android:id="@+id/btnFirst"
+            android:typeface="serif"
+            android:textStyle="bold"
+
+            android:onClick="onClickFirstRecord"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Prev"
+            android:id="@+id/btnPrev"
+            android:layout_gravity="center_horizontal|top"
+            android:textStyle="bold"
+            android:textColor="#1626b9"
+
+            android:onClick="onClickPrevRecord"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="92dp"
+            android:layout_alignTop="@+id/btnFirst"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Next"
+            android:id="@+id/btnNext"
+            android:typeface="serif"
+            android:textStyle="bold"
+
+
+            android:textColor="#1626b9"
+            android:onClick="onClickNextRecord"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="172dp"
+            android:layout_alignTop="@+id/btnFirst"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Last"
+            android:id="@+id/btnLast"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:onClick="onClickLastRecord"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/btnFirst"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/RecordValues"
+            android:typeface="serif"
+            android:textSize="20dp"
+
+            android:text="Record 1 of 1"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="#e40716"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/btnFirst"/>
+    </RelativeLayout>
+
+</LinearLayout>
