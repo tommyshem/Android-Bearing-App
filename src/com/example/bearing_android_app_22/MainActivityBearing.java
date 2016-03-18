@@ -55,9 +55,6 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
         //open this apps database
         openThisAppsDatabase();
 
-        myDatabase.insertRow("6000", 100, 20, 10, "zz", 0, "stores", " ");
-        myDatabase.insertRow("6001", 200, 40, 20, "z", 0, "stores1", " ");
-        myDatabase.insertRow("6002", 300, 60, 60, "rs", 0, "stores2", " ");
         //setup references and listeners
         InitContentViewReferencesAndListeners();
 
