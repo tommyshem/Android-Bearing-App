@@ -134,7 +134,7 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
     private void displayToastForId(long idInDB) {
         Cursor cursor = myDatabase.getRow(idInDB);
         if (cursor.moveToFirst()) {
-            long idDB = cursor.getLong(DBAdapter.COL_ROWID);
+            long idDB = cursor.getLong(DBAdapter.COL_ROW_ID);
             String bearing_number = cursor.getString(DBAdapter.COL_BEARING_NUMBER);
             int size = cursor.getInt(DBAdapter.COL_ID_SIZE);
             int od = cursor.getInt(DBAdapter.COL_OD_SIZE);

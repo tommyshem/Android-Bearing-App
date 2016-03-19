@@ -187,7 +187,7 @@ public class EditEntry_Activity extends Activity {
                 }
             case R.id.mi_delete:
                 int row_id_delete;
-                row_id_delete = c.getInt(DBAdapter.COL_ROWID);
+                row_id_delete = c.getInt(DBAdapter.COL_ROW_ID);
                 if (row_id_delete != -1) {
 
                     MainActivityBearing.myDatabase.deleteRow(row_id_delete);
@@ -317,7 +317,7 @@ public class EditEntry_Activity extends Activity {
             et_id.setText(c.getString(DBAdapter.COL_ID_SIZE));
             et_width.setText(c.getString(DBAdapter.COL_KEY_WIDTH));
             et_type.setText(c.getString(DBAdapter.COL_KEY_TYPE));
-            edit_text_image_number_ref.setText(c.getString(DBAdapter.COL_KEY_IMAGENUMBER));
+            edit_text_image_number_ref.setText(c.getString(DBAdapter.COL_KEY_IMAGE_NUMBER));
             et_location.setText(c.getString(DBAdapter.COL_KEY_LOCATION));
             et_comments.setText(c.getString(DBAdapter.COL_KEY_COMMENTS));
 
