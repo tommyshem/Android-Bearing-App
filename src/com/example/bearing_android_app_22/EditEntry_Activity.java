@@ -20,10 +20,13 @@ public class EditEntry_Activity extends Activity {
     //cursor reference for the database
     Cursor c;
     //global variables for the gui references
-    private EditText et_bearingNumber, et_id, et_od, edit_text_image_number_ref, et_width, et_type, et_location, et_comments;
-    private ImageButton b_prev, b_next, b_last, b_first;
+    private EditText bearing_number_EditText_Ref, id_EditText_Ref, od_EditText_Ref;
+    private EditText image_number_EditText_Ref, width_EditText_Ref,type_EditText_Ref;
+    private EditText location_EditText_Ref, comments_EditText_Ref;
+    private ImageButton prev_ImageButton_Ref, next_ImageButton_Ref;
+    private ImageButton first_ImageButton_Ref, last_ImageButton_Ref;
     private MenuItem mi_add, mi_save, mi_cancel, mi_delete;
-    private TextView record_values_TextView_Ref;
+    private TextView record_values_EditText_Ref;
     private EditText[] edit_texts;
 
     // ArrayList<EditText> arrayList = new ArrayList<EditText>();
@@ -57,33 +60,33 @@ public class EditEntry_Activity extends Activity {
      */
     private void setupEditTexts() {
         //setup reference for the edit text views for use in java
-        et_bearingNumber = (EditText) this.findViewById(R.id.editTextBearingNum);
-        et_id = (EditText) this.findViewById(R.id.editTextID);
-        et_od = (EditText) this.findViewById(R.id.editTextOD);
-        et_width = (EditText) this.findViewById(R.id.editTextWidth);
-        et_type = (EditText) this.findViewById(R.id.editTextType);
-        et_location = (EditText) this.findViewById(R.id.editTextLocation);
-        edit_text_image_number_ref = (EditText) this.findViewById(R.id.editTextImageNum);
-        et_comments = (EditText) this.findViewById(R.id.editTextComments);
+        bearing_number_EditText_Ref = (EditText) this.findViewById(R.id.editTextBearingNum);
+        id_EditText_Ref = (EditText) this.findViewById(R.id.editTextID);
+        od_EditText_Ref = (EditText) this.findViewById(R.id.editTextOD);
+        width_EditText_Ref = (EditText) this.findViewById(R.id.editTextWidth);
+        type_EditText_Ref = (EditText) this.findViewById(R.id.editTextType);
+        location_EditText_Ref = (EditText) this.findViewById(R.id.editTextLocation);
+        image_number_EditText_Ref = (EditText) this.findViewById(R.id.editTextImageNum);
+        comments_EditText_Ref = (EditText) this.findViewById(R.id.editTextComments);
 
         //array for the edit texts.
         edit_texts = new EditText[8];
-        edit_texts[0] = et_bearingNumber;
-        edit_texts[1] = et_id;
-        edit_texts[2] = et_od;
-        edit_texts[3] = et_width;
-        edit_texts[4] = et_type;
-        edit_texts[5] = et_location;
-        edit_texts[6] = edit_text_image_number_ref;
-        edit_texts[7] = et_comments;
+        edit_texts[0] = bearing_number_EditText_Ref;
+        edit_texts[1] = id_EditText_Ref;
+        edit_texts[2] = od_EditText_Ref;
+        edit_texts[3] = width_EditText_Ref;
+        edit_texts[4] = type_EditText_Ref;
+        edit_texts[5] = location_EditText_Ref;
+        edit_texts[6] = image_number_EditText_Ref;
+        edit_texts[7] = comments_EditText_Ref;
 
         //setup button reference for the views for use in java
-        b_next = (ImageButton) this.findViewById(R.id.btnNext);
-        b_prev = (ImageButton) this.findViewById(R.id.btnPrev);
-        b_last = (ImageButton) this.findViewById(R.id.btnLast);
-        b_first = (ImageButton) this.findViewById(R.id.btnFirst);
+        next_ImageButton_Ref = (ImageButton) this.findViewById(R.id.btnNext);
+        prev_ImageButton_Ref = (ImageButton) this.findViewById(R.id.btnPrev);
+        last_ImageButton_Ref = (ImageButton) this.findViewById(R.id.btnLast);
+        first_ImageButton_Ref = (ImageButton) this.findViewById(R.id.btnFirst);
         //setup text view reference for the use in java
-        record_values_TextView_Ref = (TextView) this.findViewById(R.id.RecordValues);
+        record_values_EditText_Ref = (TextView) this.findViewById(R.id.RecordValues);
 
     }
 
@@ -125,10 +128,10 @@ public class EditEntry_Activity extends Activity {
             //
             case R.id.mi_add:
                 //hide the nav buttons
-                b_first.setVisibility(Button.INVISIBLE);
-                b_last.setVisibility(Button.INVISIBLE);
-                b_next.setVisibility(Button.INVISIBLE);
-                b_prev.setVisibility(Button.INVISIBLE);
+                first_ImageButton_Ref.setVisibility(Button.INVISIBLE);
+                last_ImageButton_Ref.setVisibility(Button.INVISIBLE);
+                next_ImageButton_Ref.setVisibility(Button.INVISIBLE);
+                prev_ImageButton_Ref.setVisibility(Button.INVISIBLE);
 
 
                 // edit texts change focus
@@ -208,10 +211,10 @@ public class EditEntry_Activity extends Activity {
 
     private void UnHideAllNavButtons() {
         //un hide the nav buttons
-        b_first.setVisibility(Button.VISIBLE);
-        b_last.setVisibility(Button.VISIBLE);
-        b_next.setVisibility(Button.VISIBLE);
-        b_prev.setVisibility(Button.VISIBLE);
+        first_ImageButton_Ref.setVisibility(Button.VISIBLE);
+        last_ImageButton_Ref.setVisibility(Button.VISIBLE);
+        next_ImageButton_Ref.setVisibility(Button.VISIBLE);
+        prev_ImageButton_Ref.setVisibility(Button.VISIBLE);
         // edit texts change focus to false - disables the input to the edit boxes
         for (EditText edit_text : edit_texts) {
             edit_text.setFocusable(false);
@@ -227,14 +230,14 @@ public class EditEntry_Activity extends Activity {
     private Boolean InsertDataToCursor() {
         try {
 
-            MainActivityBearing.myDatabase.insertRow(et_bearingNumber.getText().toString(),
-                    Integer.parseInt(et_id.getText().toString()),
-                    Integer.parseInt(et_od.getText().toString()),
-                    Integer.parseInt(et_width.getText().toString()),
-                    et_type.getText().toString(),
-                    Integer.parseInt(edit_text_image_number_ref.getText().toString()),
-                    et_location.getText().toString(),
-                    et_comments.getText().toString());
+            MainActivityBearing.myDatabase.insertRow(bearing_number_EditText_Ref.getText().toString(),
+                    Integer.parseInt(id_EditText_Ref.getText().toString()),
+                    Integer.parseInt(od_EditText_Ref.getText().toString()),
+                    Integer.parseInt(width_EditText_Ref.getText().toString()),
+                    type_EditText_Ref.getText().toString(),
+                    Integer.parseInt(image_number_EditText_Ref.getText().toString()),
+                    location_EditText_Ref.getText().toString(),
+                    comments_EditText_Ref.getText().toString());
         } catch (NumberFormatException nfe) {
             Toast.makeText(EditEntry_Activity.this, "Failed to Update Database", Toast.LENGTH_SHORT).show();
             return false;
@@ -312,18 +315,18 @@ public class EditEntry_Activity extends Activity {
      */
     private void UpdateAllEditTextViewsFromCursor() {
         if (c != null) {
-            et_bearingNumber.setText(c.getString(DBAdapter.COL_BEARING_NUMBER));
-            et_od.setText(c.getString(DBAdapter.COL_OD_SIZE));
-            et_id.setText(c.getString(DBAdapter.COL_ID_SIZE));
-            et_width.setText(c.getString(DBAdapter.COL_KEY_WIDTH));
-            et_type.setText(c.getString(DBAdapter.COL_KEY_TYPE));
-            edit_text_image_number_ref.setText(c.getString(DBAdapter.COL_KEY_IMAGE_NUMBER));
-            et_location.setText(c.getString(DBAdapter.COL_KEY_LOCATION));
-            et_comments.setText(c.getString(DBAdapter.COL_KEY_COMMENTS));
+            bearing_number_EditText_Ref.setText(c.getString(DBAdapter.COL_BEARING_NUMBER));
+            od_EditText_Ref.setText(c.getString(DBAdapter.COL_OD_SIZE));
+            id_EditText_Ref.setText(c.getString(DBAdapter.COL_ID_SIZE));
+            width_EditText_Ref.setText(c.getString(DBAdapter.COL_KEY_WIDTH));
+            type_EditText_Ref.setText(c.getString(DBAdapter.COL_KEY_TYPE));
+            image_number_EditText_Ref.setText(c.getString(DBAdapter.COL_KEY_IMAGE_NUMBER));
+            location_EditText_Ref.setText(c.getString(DBAdapter.COL_KEY_LOCATION));
+            comments_EditText_Ref.setText(c.getString(DBAdapter.COL_KEY_COMMENTS));
 
             //setup text for the record number and size of records
             String text_values = "Record " + (c.getPosition() + 1) + " of " + c.getCount();
-            record_values_TextView_Ref.setText(text_values);
+            record_values_EditText_Ref.setText(text_values);
 
 
         }
@@ -337,17 +340,17 @@ public class EditEntry_Activity extends Activity {
      */
     private void ClearAllEditTextValues() {
         //clear all the values to nothing so you can edit the edit text values
-        et_bearingNumber.setText("");
-        et_od.setText("");
-        et_id.setText("");
-        et_width.setText("");
-        et_type.setText("");
-        edit_text_image_number_ref.setText("");
-        et_location.setText("");
-        et_comments.setText("");
+        bearing_number_EditText_Ref.setText("");
+        od_EditText_Ref.setText("");
+        id_EditText_Ref.setText("");
+        width_EditText_Ref.setText("");
+        type_EditText_Ref.setText("");
+        image_number_EditText_Ref.setText("");
+        location_EditText_Ref.setText("");
+        comments_EditText_Ref.setText("");
 
         //update the record text view to what is going on
-        record_values_TextView_Ref.setText(R.string.EditingNewEntry);
+        record_values_EditText_Ref.setText(R.string.EditingNewEntry);
 
     }
 
