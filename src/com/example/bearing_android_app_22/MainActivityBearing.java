@@ -1,12 +1,13 @@
 package com.example.bearing_android_app_22;
 //todo:landscape layout needs xml file doing.
 //todo:real database data needs loading into database
-//todo: finish newlayout layout file with commments field and scoll view
+//todo: finish new layout layout file with comments field and scroll view
 //todo: main activity when edit is pressed should  go to edit entry with that position
 //todo: edit needs adding to edit entry activity
-//todo: delete on editscreen needs dialog for are you sure yes or no ?
+//todo: delete on edit screen needs dialog for are you sure yes or no ?
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.*;
 import android.app.Activity;
 
+@SuppressWarnings("deprecation")
 public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarChangeListener {
     //database reference
     public static DBAdapter myDatabase;
@@ -29,10 +31,10 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
     private EditText WidthDiameter_editText_Ref;
     private SeekBar OuterDiameter_SliderSwitch_Ref;
     private SeekBar WidthDiameter_SliderSwitch_Ref;
-    private ImageView Imageview_bearing_ref;
+    private ImageView bearing_ImageView_Ref;
     // bearing text view reference
-    private TextView tvbearingnumberref;
-    private TextView tvbearingdescriptionref;
+    private TextView bearing_number_TextView_Ref;
+    private TextView bearing_description_TextView_Ref;
 
     /**
      * GetDatabaseRecordLocationNumber
@@ -93,12 +95,12 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
         WidthDiameter_SliderSwitch_Ref = (SeekBar) findViewById(R.id.seekBar_Width);
 
         //Reference for the image view bearing picture
-        Imageview_bearing_ref = (ImageView) findViewById(R.id.iv_BearingImage);
+        bearing_ImageView_Ref = (ImageView) findViewById(R.id.iv_BearingImage);
 
 
         //bearing info which needs updating reference
-        tvbearingnumberref = (TextView) findViewById(R.id.tv_BearingNumber);
-        tvbearingdescriptionref = (TextView) findViewById(R.id.tv_BearingDescription);
+        bearing_number_TextView_Ref = (TextView) findViewById(R.id.tv_BearingNumber);
+        bearing_description_TextView_Ref = (TextView) findViewById(R.id.tv_BearingDescription);
 
         //sets the listener for the seek bars all of them changed - this means methods in this class
         ////callback method onProgressChanged - onStartTrackingTouch and onStopTrackingTouch
@@ -121,19 +123,19 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
 
 
         //register for context menu callback method onContextItemSelected on the image - (long press menu)
-        registerForContextMenu(Imageview_bearing_ref);
+        registerForContextMenu(bearing_ImageView_Ref);
     }
 
     /**
      * display the record
      *
-     * @param idInDB
+     * @param idInDB Pass in id to be displayed.
      */
     private void displayToastForId(long idInDB) {
         Cursor cursor = myDatabase.getRow(idInDB);
         if (cursor.moveToFirst()) {
             long idDB = cursor.getLong(DBAdapter.COL_ROWID);
-            String bearingnumber = cursor.getString(DBAdapter.COL_BEARING_NUMBER);
+            String bearing_number = cursor.getString(DBAdapter.COL_BEARING_NUMBER);
             int size = cursor.getInt(DBAdapter.COL_ID_SIZE);
             int od = cursor.getInt(DBAdapter.COL_OD_SIZE);
             int width = cursor.getInt(DBAdapter.COL_KEY_WIDTH);
@@ -141,7 +143,7 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
             String comments = cursor.getString((DBAdapter.COL_KEY_COMMENTS));
 
             String message = "Record ID: " + idDB + "\n"
-                    + "Name: " + bearingnumber + "\n"
+                    + "Name: " + bearing_number + "\n"
                     + "I/D: " + size + "mm\n"
                     + "O/D: " + od + "mm\n"
                     + "Width: " + width + "mm\n"
@@ -158,24 +160,20 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
     *database methods
      */
 
-    private void UpdateBearingText(long idInDB) {
-        Cursor cursor = myDatabase.getRow(idInDB);
+    private void UpdateBearingText(long DB_rowid) {
+        Cursor cursor = myDatabase.getRow(DB_rowid);
         //if cursor not null then get the info
         if (cursor.moveToFirst()) {
 
             //get the info from the cursor from the record which the list selection pressed with the finger
-            long idDB = cursor.getLong(DBAdapter.COL_ROWID);
-            String bearingnumber = cursor.getString(DBAdapter.COL_BEARING_NUMBER);
-            int id = cursor.getInt(DBAdapter.COL_ID_SIZE);
-            int od = cursor.getInt(DBAdapter.COL_OD_SIZE);
-            int width = cursor.getInt(DBAdapter.COL_KEY_WIDTH);
-            String location = cursor.getString(DBAdapter.COL_KEY_LOCATION);
-
+            String bearing_number = cursor.getString(DBAdapter.COL_BEARING_NUMBER);
             //update the gui bearing number text and description
-            String message = "I/D : " + id + "mm, O/D : " + od + "mm,\n Width : " + width + "mm";
+            String message = "I/D : " + cursor.getInt(DBAdapter.COL_ID_SIZE) +
+                             "mm, O/D : " + cursor.getInt(DBAdapter.COL_OD_SIZE) + "mm,\n " +
+                             "Width : " + cursor.getInt(DBAdapter.COL_KEY_WIDTH) + "mm";
 
-            tvbearingnumberref.setText(bearingnumber.toString());
-            tvbearingdescriptionref.setText(message);
+            bearing_number_TextView_Ref.setText(bearing_number);
+            bearing_description_TextView_Ref.setText(message);
         }
         cursor.close();
     }
@@ -364,10 +362,11 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
      * setOnSeekBarChangeListener implements methods must be over ridden,
      * the methods that can be over-ridin are onProgressChanged, onStartTrackingTouch and onStopTrackingTouch
      *
-     * @param seekbar  reference
+     * @param seekbar  The SeekBar whose progress has changed
      * @param progress value of the slider between min and max numbers setup on the SeekBar
-     * @param fromuser
+     * @param fromuser True if the progress change was initiated by the user.
      */
+    @SuppressLint("SetTextI18n")
     @Override //  Notify that the progress level has changed.
     public void onProgressChanged(SeekBar seekbar, int progress, boolean fromuser) {
 
@@ -386,7 +385,7 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
     /**
      * used for the seekbar implements methods
      *
-     * @param seekBar
+     * @param seekBar The SeekBar in which the touch gesture began
      */
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -397,7 +396,7 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
     /**
      * used for the seekbar implements methods.
      *
-     * @param seekBar
+     * @param seekBar The SeekBar in which the touch gesture began
      */
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {

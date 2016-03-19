@@ -29,8 +29,8 @@ public class DBAdapter {
     public static final String DATABASE_TABLE = "mainTable";
 
     // DataBase Fields  go here
-    public static final String KEY_ROWID = "_id";
-    public static final int COL_ROWID = 0;
+    public static final String KEY_ROW_ID = "_id";
+    public static final int COL_ROW_ID = 0;
 
     //  Setup your fields here:
     public static final String KEY_BEARING_NUMBER = "name";
@@ -38,28 +38,28 @@ public class DBAdapter {
     public static final String KEY_ID_SIZE = "idsize";
     public static final String KEY_WIDTH = "widthsize";
     public static final String KEY_TYPE = "type";
-    public static final String KEY_IMAGENUMBER = "imagenumber";
+    public static final String KEY_IMAGE_NUMBER = "imagenumber";
     public static final String KEY_LOCATION = "location";
     public static final String KEY_COMMENTS = "comments";
 
-    //  Setup your field numbers here (0 = KEY_ROWID, 1=...)
+    //  Setup your field numbers here (0 = KEY_ROW_ID, 1=...)
     public static final int COL_BEARING_NUMBER = 1;
     public static final int COL_OD_SIZE = 2;
     public static final int COL_ID_SIZE = 3;
     public static final int COL_KEY_WIDTH = 4;
     public static final int COL_KEY_TYPE = 5;
-    public static final int COL_KEY_IMAGENUMBER = 6;
+    public static final int COL_KEY_IMAGE_NUMBER = 6;
     public static final int COL_KEY_LOCATION = 7;
     public static final int COL_KEY_COMMENTS = 8;
 
     //  make sure all the fields are filled in at the end:
-    public static final String[] ALL_KEYS = new String[]{KEY_ROWID,
+    public static final String[] ALL_KEYS = new String[]{KEY_ROW_ID,
             KEY_BEARING_NUMBER,
             KEY_OD_SIZE,
             KEY_ID_SIZE,
             KEY_WIDTH,
             KEY_TYPE,
-            KEY_IMAGENUMBER,
+            KEY_IMAGE_NUMBER,
             KEY_LOCATION,
             KEY_COMMENTS};
 
@@ -70,33 +70,22 @@ public class DBAdapter {
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
-                    + " (" + KEY_ROWID + " integer primary key autoincrement, "
+                    + " (" + KEY_ROW_ID + " integer primary key autoincrement, "
 
-			/*
-			 * CHANGE 2:
-			 */
-                    // Place all your fields here!
-                    // + KEY_{...} + " {type} not null"
-                    //	- Key is the column name you created above.
                     //	- {type} is one of: text, integer, real, blob
                     //		(http://www.sqlite.org/datatype3.html)
-                    //  - "not null" means it is a required field (must be given a value).
-                    // NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
-
+                    
                     + KEY_BEARING_NUMBER + " string not null,"
                     + KEY_OD_SIZE + " integer not null, "
                     + KEY_ID_SIZE + " integer not null, "
                     + KEY_WIDTH + " integer not null, "
                     + KEY_TYPE + " string not null,"
-                    + KEY_IMAGENUMBER + " integer not null, "
+                    + KEY_IMAGE_NUMBER + " integer not null, "
                     + KEY_LOCATION + " string not null, "
                     + KEY_COMMENTS + " string not null"
 
 // Rest  of creation:
                     + ");";
-
-    // Context of application who uses us.
-    private final Context context;
 
     //database reference
     private DatabaseHelper myDBHelper;
@@ -106,8 +95,7 @@ public class DBAdapter {
     //	Public methods:
     /////////////////////////////////////////////////////////////////////
     //constructor which creates a database in the data/data directory
-    public DBAdapter(Context ctx) {
-        this.context = ctx;
+    public DBAdapter(Context context) {
         myDBHelper = new DatabaseHelper(context);
     }
 
@@ -137,22 +125,29 @@ public class DBAdapter {
         initialValues.put(KEY_ID_SIZE, idsize);
         initialValues.put(KEY_WIDTH, widthsize);
         initialValues.put(KEY_TYPE, type);
-        initialValues.put(KEY_IMAGENUMBER, imagenumber);
+        initialValues.put(KEY_IMAGE_NUMBER, imagenumber);
         initialValues.put(KEY_LOCATION, location);
         initialValues.put(KEY_COMMENTS, comments);
         // Insert it into the database.
         return sqlDB.insert(DATABASE_TABLE, null, initialValues);
     }
 
-    // Delete a row from the database, by rowId (primary key)
+    /**
+     * Delete a row from the database, by rowId (primary key)
+     * @param rowId pass in database row id to delete that record
+     * @return result
+     */
     public boolean deleteRow(long rowId) {
-        String where = KEY_ROWID + "=" + rowId;
+        String where = KEY_ROW_ID + "=" + rowId;
         return sqlDB.delete(DATABASE_TABLE, where, null) != 0;
     }
 
+    /**
+     *  Delete all records in the database
+     */
     public void deleteAll() {
         Cursor c = getAllRows();
-        long rowId = c.getColumnIndexOrThrow(KEY_ROWID);
+        long rowId = c.getColumnIndexOrThrow(KEY_ROW_ID);
         if (c.moveToFirst()) {
             do {
                 deleteRow(c.getLong((int) rowId));
@@ -161,7 +156,10 @@ public class DBAdapter {
         c.close();
     }
 
-    // Return all data in the database.
+    /**
+     * Return all data in the database.
+     * @return database cursor
+     */
     public Cursor getAllRows() {
         String where = null;
         Cursor c = sqlDB.query(true, DATABASE_TABLE, ALL_KEYS,
@@ -211,14 +209,14 @@ public class DBAdapter {
             where = null;
         } else if (sqlList.size() == 1) {
             where = sqlList.get(0);
-            Log.d("search1 items", sqlList.get(0).toString());
+            Log.d("search1 items", sqlList.get(0));
         } else if (sqlList.size() == 2) {
             where = sqlList.get(0) + " AND " + sqlList.get(1);
-            Log.d("search 2 items", where.toString());
+            Log.d("search 2 items", where);
 
         } else if (sqlList.size() == 3) {
             where = sqlList.get(0) + " AND " + sqlList.get(1) + " AND " + sqlList.get(2);
-            Log.d("search 3 items", where.toString());
+            Log.d("search 3 items", where);
 
         }
 
@@ -230,9 +228,12 @@ public class DBAdapter {
         return c;
     }
 
-    // Get a specific row (by rowId)
+    /**
+     * @param rowId Get a specific row
+     * @return result
+     */
     public Cursor getRow(long rowId) {
-        String where = KEY_ROWID + "=" + rowId;
+        String where = KEY_ROW_ID + "=" + rowId;
         Cursor c = sqlDB.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
         if (c != null) {
@@ -241,10 +242,24 @@ public class DBAdapter {
         return c;
     }
 
-    // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String bnumber, int odsize, int idsize, int widthsize, String type, int imagenumber, String location, String comments) {
+    /**
+     * Update an existing row to be equal to new data.
+     * @param rowId             pass in row id
+     * @param bearing_number    pass in bearing number
+     * @param od_size           pass in outer diameter
+     * @param id_size           pass in inner diameter
+     * @param width_size        pass in width diameter
+     * @param type              pass in type of bearing eg. zz 2rs
+     * @param image_number      pass in image number
+     * @param location          pass in location of the bearing
+     * @param comments          pass in ant comments
+     * @return result 
+     */
+    public boolean updateRow(long rowId, String bearing_number, int od_size,
+                             int id_size, int width_size, String type,
+                             int image_number, String location, String comments) {
 
-        String where = KEY_ROWID + "=" + rowId;
+        String where = KEY_ROW_ID + "=" + rowId;
 
 		/*
 		 * CHANGE 4:
@@ -253,12 +268,12 @@ public class DBAdapter {
         // Also change the function's arguments to be what you need!
         // Create row's data:
         ContentValues newValues = new ContentValues();
-        newValues.put(KEY_BEARING_NUMBER, bnumber);
-        newValues.put(KEY_OD_SIZE, odsize);
-        newValues.put(KEY_ID_SIZE, idsize);
-        newValues.put(KEY_WIDTH, widthsize);
+        newValues.put(KEY_BEARING_NUMBER, bearing_number);
+        newValues.put(KEY_OD_SIZE, od_size);
+        newValues.put(KEY_ID_SIZE, id_size);
+        newValues.put(KEY_WIDTH, width_size);
         newValues.put(KEY_TYPE, type);
-        newValues.put(KEY_IMAGENUMBER, imagenumber);
+        newValues.put(KEY_IMAGE_NUMBER, image_number);
         newValues.put(KEY_LOCATION, location);
         newValues.put(KEY_COMMENTS, comments);
         // Insert it into the database.

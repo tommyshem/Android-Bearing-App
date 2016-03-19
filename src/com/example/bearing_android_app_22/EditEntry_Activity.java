@@ -23,7 +23,7 @@ public class EditEntry_Activity extends Activity {
     private EditText et_bearingNumber, et_id, et_od, edit_text_image_number_ref, et_width, et_type, et_location, et_comments;
     private ImageButton b_prev, b_next, b_last, b_first;
     private MenuItem mi_add, mi_save, mi_cancel, mi_delete;
-    private TextView textview_record_values_ref;
+    private TextView record_values_TextView_Ref;
     private EditText[] edit_texts;
 
     // ArrayList<EditText> arrayList = new ArrayList<EditText>();
@@ -83,7 +83,7 @@ public class EditEntry_Activity extends Activity {
         b_last = (ImageButton) this.findViewById(R.id.btnLast);
         b_first = (ImageButton) this.findViewById(R.id.btnFirst);
         //setup text view reference for the use in java
-        textview_record_values_ref = (TextView) this.findViewById(R.id.RecordValues);
+        record_values_TextView_Ref = (TextView) this.findViewById(R.id.RecordValues);
 
     }
 
@@ -152,7 +152,7 @@ public class EditEntry_Activity extends Activity {
                 //un hide the nav buttons
                 UnHideAllNavButtons();
 
-                //set the add menu item to visible and the other two menu items to not visable
+                //set the add menu item to visible and the other two menu items to not viable
                 mi_add.setVisible(true);
 
                 mi_cancel.setVisible(false);
@@ -309,14 +309,6 @@ public class EditEntry_Activity extends Activity {
      * UpdateAllEditTextViewsFromCursor method
      * method to update all the edit text views
      * fields for the data set
-     * KEY_ROWID,
-     * KEY_BEARING_NUMBER,
-     * KEY_OD_SIZE,
-     * KEY_ID_SIZE,
-     * KEY_WIDTH,
-     * KEY_TYPE,
-     * KEY_IMAGENUMBER,
-     * KEY_LOCATION
      */
     private void UpdateAllEditTextViewsFromCursor() {
         if (c != null) {
@@ -331,7 +323,7 @@ public class EditEntry_Activity extends Activity {
 
             //setup text for the record number and size of records
             String text_values = "Record " + (c.getPosition() + 1) + " of " + c.getCount();
-            textview_record_values_ref.setText(text_values);
+            record_values_TextView_Ref.setText(text_values);
 
 
         }
@@ -355,7 +347,7 @@ public class EditEntry_Activity extends Activity {
         et_comments.setText("");
 
         //update the record text view to what is going on
-        textview_record_values_ref.setText(R.string.EditingNewEntry);
+        record_values_TextView_Ref.setText(R.string.EditingNewEntry);
 
     }
 
