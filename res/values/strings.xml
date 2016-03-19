@@ -34,4 +34,5 @@
     <string name="Last">]]</string>
     <string name="record">Record number</string>
     <string name="commentsText">Comments</string>
+    <string name="EditingNewEntry">" Editing New Entry"</string>
 </resources>

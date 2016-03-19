@@ -1,7 +1,6 @@
 package com.example.bearing_android_app_22;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,34 +9,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
-import java.util.ArrayList;
-
 
 /**
  * EditEntry class - provides the navigation for the cursor and added the menu item edit for
  * adding the new records
  */
+@SuppressWarnings("deprecation")
 public class EditEntry_Activity extends Activity {
 
-    //global vaiables for the gui references
-    private EditText et_bearingNumber, et_id, et_od, et_imagenumber, et_width, et_type, et_location, et_comments;
-    private ImageButton b_prev, b_next, b_last, b_first;
-    private MenuItem mi_add, mi_save, mi_cancel, mi_delete;
-    private TextView tv_recordtextvalues;
-    private EditText[] edit_texts;
     //cursor reference for the database
     Cursor c;
+    //global variables for the gui references
+    private EditText et_bearingNumber, et_id, et_od, edit_text_image_number_ref, et_width, et_type, et_location, et_comments;
+    private ImageButton b_prev, b_next, b_last, b_first;
+    private MenuItem mi_add, mi_save, mi_cancel, mi_delete;
+    private TextView textview_record_values_ref;
+    private EditText[] edit_texts;
 
     // ArrayList<EditText> arrayList = new ArrayList<EditText>();
-
 
     /**
      * Main method called when creating the activity.
      * setup the buttons and edit texts views
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Android Object passed
      */
-    public void onCreate(Bundle savedInstanceState) {
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newlayout);
         //setup the edit text references
@@ -65,7 +63,7 @@ public class EditEntry_Activity extends Activity {
         et_width = (EditText) this.findViewById(R.id.editTextWidth);
         et_type = (EditText) this.findViewById(R.id.editTextType);
         et_location = (EditText) this.findViewById(R.id.editTextLocation);
-        et_imagenumber = (EditText) this.findViewById(R.id.editTextImageNum);
+        edit_text_image_number_ref = (EditText) this.findViewById(R.id.editTextImageNum);
         et_comments = (EditText) this.findViewById(R.id.editTextComments);
 
         //array for the edit texts.
@@ -76,7 +74,7 @@ public class EditEntry_Activity extends Activity {
         edit_texts[3] = et_width;
         edit_texts[4] = et_type;
         edit_texts[5] = et_location;
-        edit_texts[6] = et_imagenumber;
+        edit_texts[6] = edit_text_image_number_ref;
         edit_texts[7] = et_comments;
 
         //setup button reference for the views for use in java
@@ -85,7 +83,7 @@ public class EditEntry_Activity extends Activity {
         b_last = (ImageButton) this.findViewById(R.id.btnLast);
         b_first = (ImageButton) this.findViewById(R.id.btnFirst);
         //setup text view reference for the use in java
-        tv_recordtextvalues = (TextView) this.findViewById(R.id.RecordValues);
+        textview_record_values_ref = (TextView) this.findViewById(R.id.RecordValues);
 
     }
 
@@ -134,8 +132,8 @@ public class EditEntry_Activity extends Activity {
 
 
                 // edit texts change focus
-                for (int i = 0; i < edit_texts.length; i++) {
-                    edit_texts[i].setFocusableInTouchMode(true);
+                for (EditText edit_text : edit_texts) {
+                    edit_text.setFocusableInTouchMode(true);
                 }
 
                 //set the add menu item to invisible
@@ -199,7 +197,7 @@ public class EditEntry_Activity extends Activity {
                     startManagingCursor(c);
                     UpdateAllEditTextViewsFromCursor();
                     //todo: needs testing above so deletes and updates in the correct place
-                    //todo : needs dialog box yes or no before deleteing the data
+                    //todo : needs dialog box yes or no before deleting the data
                 }
 
                 return true;
@@ -215,8 +213,8 @@ public class EditEntry_Activity extends Activity {
         b_next.setVisibility(Button.VISIBLE);
         b_prev.setVisibility(Button.VISIBLE);
         // edit texts change focus to false - disables the input to the edit boxes
-        for (int i = 0; i < edit_texts.length; i++) {
-            edit_texts[i].setFocusable(false);
+        for (EditText edit_text : edit_texts) {
+            edit_text.setFocusable(false);
         }
 
     }
@@ -234,7 +232,7 @@ public class EditEntry_Activity extends Activity {
                     Integer.parseInt(et_od.getText().toString()),
                     Integer.parseInt(et_width.getText().toString()),
                     et_type.getText().toString(),
-                    Integer.parseInt(et_imagenumber.getText().toString()),
+                    Integer.parseInt(edit_text_image_number_ref.getText().toString()),
                     et_location.getText().toString(),
                     et_comments.getText().toString());
         } catch (NumberFormatException nfe) {
@@ -327,13 +325,13 @@ public class EditEntry_Activity extends Activity {
             et_id.setText(c.getString(DBAdapter.COL_ID_SIZE));
             et_width.setText(c.getString(DBAdapter.COL_KEY_WIDTH));
             et_type.setText(c.getString(DBAdapter.COL_KEY_TYPE));
-            et_imagenumber.setText(c.getString(DBAdapter.COL_KEY_IMAGENUMBER));
+            edit_text_image_number_ref.setText(c.getString(DBAdapter.COL_KEY_IMAGENUMBER));
             et_location.setText(c.getString(DBAdapter.COL_KEY_LOCATION));
             et_comments.setText(c.getString(DBAdapter.COL_KEY_COMMENTS));
 
             //setup text for the record number and size of records
-            String textvalues = "Record " + (c.getPosition() + 1) + " of " + c.getCount();
-            tv_recordtextvalues.setText(textvalues);
+            String text_values = "Record " + (c.getPosition() + 1) + " of " + c.getCount();
+            textview_record_values_ref.setText(text_values);
 
 
         }
@@ -352,12 +350,12 @@ public class EditEntry_Activity extends Activity {
         et_id.setText("");
         et_width.setText("");
         et_type.setText("");
-        et_imagenumber.setText("");
+        edit_text_image_number_ref.setText("");
         et_location.setText("");
         et_comments.setText("");
 
         //update the record text view to what is going on
-        tv_recordtextvalues.setText(" Editing New Entry");
+        textview_record_values_ref.setText(R.string.EditingNewEntry);
 
     }
 
