@@ -46,9 +46,9 @@ public class MainActivityBearing extends Activity implements SeekBar.OnSeekBarCh
         return DatabaseRecordLocationNumber;
     }
 
-    /*
+    /**
     *UI create
-     */
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
